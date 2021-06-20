@@ -2,6 +2,8 @@
 
 ## Installation
 
+<i>(Coming soon to package manager near you...)</i>
+
 ```console
 yarn add react-native-ios-list
 ```
@@ -9,12 +11,20 @@ yarn add react-native-ios-list
 ## Usage
 
 ```jsx
-import { List, Section, PressableItem, Item } from 'react-native-ios-list';
+import {
+  List,
+  Section,
+  PressableItem,
+  Item,
+  ListStyle,
+} from 'react-native-ios-list';
+import { Text } from 'react-native';
 ```
+
+Static List Items
 
 ```jsx
 <List listStyle={ListStyle.insetGrouped}>
-  {/* Static List Items */}
   <Section header='Static Items'>
     <PressableItem onPress={() => console.log('Option 1')}>
       <Text>Option 1</Text>
@@ -23,7 +33,13 @@ import { List, Section, PressableItem, Item } from 'react-native-ios-list';
       <Text>Option 2</Text>
     </PressableItem>
   </Section>
-  {/* Dynamic List Items */}
+</List>
+```
+
+Dynamic List Items
+
+```jsx
+<List listStyle={ListStyle.grouped}>
   <Section header='Dynamic Items'>
     {Array(4)
       .fill(0)

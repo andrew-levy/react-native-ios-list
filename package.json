@@ -32,11 +32,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/andrew-levy/"
+    "url": "https://github.com/andrew-levy/react-native-ios-list"
   },
   "keywords": [
     "react",
     "native",
-    "swiftui"
+    "swiftui",
+    "list"
   ]
 }

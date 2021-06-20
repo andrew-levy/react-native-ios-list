@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 const colors = {
-  systemgray6: '#f2f2f7',
-  systemgray3: '#c7c7cc',
   systemgray: '#8e8e93',
+  systemgray3: '#c7c7cc',
+  systemgray6: '#f2f2f7',
   white: '#fff',
+  transparent: 'transparent',
 };
 
 export const styles = StyleSheet.create({
@@ -17,7 +18,7 @@ export const styles = StyleSheet.create({
     marginVertical: 10,
   },
   insetGroupedContainer: {
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     width: '90%',
     borderRadius: 10,
     alignSelf: 'center',
@@ -25,20 +26,20 @@ export const styles = StyleSheet.create({
     marginVertical: 10,
   },
   groupedItem: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.transparent,
     width: '100%',
     padding: 10,
     paddingLeft: '5%',
   },
   insetGroupedItem: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.transparent,
     width: '100%',
     padding: 10,
     paddingLeft: '5%',
   },
   groupedHeader: {
     paddingLeft: '5%',
-    color: '#8e8e93',
+    color: colors.systemgray,
     fontWeight: '500',
   },
   insetGroupedHeader: {
@@ -51,6 +52,7 @@ export const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth * 1.2,
     marginLeft: '5%',
   },
+  scrollView: { backgroundColor: colors.systemgray6 },
 });
 
 export const getContainerStyles = (style: string) => {

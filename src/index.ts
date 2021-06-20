@@ -1,5 +1,5 @@
-export * from './components/List';
-export * from './components/Item';
-export * from './components/PressableItem';
-export * from './components/LabelItem';
-export * from './components/Section';
+export { List, ListStyle } from './components/List';
+export { Item } from './components/Item';
+export { PressableItem } from './components/PressableItem';
+export { LabelItem } from './components/LabelItem';
+export { Section } from './components/Section';
