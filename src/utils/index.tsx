@@ -12,10 +12,10 @@ export const getSectionsFromChildren = (children) => {
   let sectionToCreate: Array<SectionToCreate> = [];
 
   const addNewSection = (sectionToCreate) => {
-    let sectionToAdd = (
-      <Section>{sectionToCreate.map((el) => el.item)}</Section>
-    );
-    sections = [...sections, sectionToAdd];
+    sections = [
+      ...sections,
+      <Section>{sectionToCreate.map((el) => el.item)}</Section>,
+    ];
   };
 
   const addSingleton = (child, i) => {

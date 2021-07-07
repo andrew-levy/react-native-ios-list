@@ -24,14 +24,22 @@ import { Text } from 'react-native';
 Static List Items
 
 ```jsx
-<List listStyle={ListStyle.insetGrouped}>
-  <Section header='Static Items'>
-    <PressableItem onPress={() => console.log('Option 1')}>
+<List listStyle={ListStyle.InsetGrouped}>
+  <Section header='Section 1'>
+    <Item>
       <Text>Option 1</Text>
-    </PressableItem>
-    <PressableItem onPress={() => console.log('Option 2')}>
+    </Item>
+    <Item>
       <Text>Option 2</Text>
-    </PressableItem>
+    </Item>
+  </Section>
+  <Section header='Section 2'>
+    <Item>
+      <Text>Option 1</Text>
+    </Item>
+    <Item>
+      <Text>Option 2</Text>
+    </Item>
   </Section>
 </List>
 ```
@@ -39,15 +47,13 @@ Static List Items
 Dynamic List Items
 
 ```jsx
-<List listStyle={ListStyle.grouped}>
-  <Section header='Dynamic Items'>
-    {Array(4)
-      .fill(0)
-      .map((_, i) => (
-        <Item>
-          <Text>{`Option ${i}`}</Text>
-        </Item>
-      ))}
-  </Section>
+<List listStyle={ListStyle.Grouped}>
+  {Array(4)
+    .fill(0)
+    .map((_, i) => (
+      <PressableItem onPress={() => console.log('Pressed!')}>
+        <Text>{`Option ${i}`}</Text>
+      </PressableItem>
+    ))}
 </List>
 ```

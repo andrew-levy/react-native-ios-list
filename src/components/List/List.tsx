@@ -4,8 +4,8 @@ import { styles } from '../../styles';
 import { getSectionsFromChildren, createSection } from '../../utils';
 
 export enum ListStyle {
-  insetGrouped = 'insetGrouped',
-  grouped = 'grouped',
+  InsetGrouped = 'insetGrouped',
+  Grouped = 'grouped',
 }
 
 type ListProps = {
@@ -18,12 +18,11 @@ type ListProps = {
 export const ListStyleContext = createContext(null);
 
 export const List = ({
-  listStyle = ListStyle.grouped,
+  listStyle = ListStyle.Grouped,
   sidebar,
   children,
 }: ListProps) => {
   const sections = getSectionsFromChildren(children);
-  // can i use a map that maps element to index
   return (
     <ListStyleContext.Provider value={listStyle}>
       <ScrollView style={styles.scrollView}>
