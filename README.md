@@ -1,14 +1,18 @@
 # react-native-ios-list
 
-## Installation
+iOS-styled list and list item components
+
+<!-- ## Installation
 
 <i>(Coming soon to package manager near you...)</i>
 
 ```console
 yarn add react-native-ios-list
-```
+``` -->
 
 ## Usage
+
+Import the components you need
 
 ```jsx
 import {
@@ -21,7 +25,7 @@ import {
 import { Text } from 'react-native';
 ```
 
-Static List Items
+A `List` component can contain a list item (`Item`, `PressableItem`, or `LabelItem`) or a `Section` component. Sections split up items into their own separate lists.
 
 ```jsx
 <List listStyle={ListStyle.InsetGrouped}>
@@ -44,7 +48,7 @@ Static List Items
 </List>
 ```
 
-Dynamic List Items
+You can also dynamically render list items by mapping over an array.
 
 ```jsx
 <List listStyle={ListStyle.Grouped}>
