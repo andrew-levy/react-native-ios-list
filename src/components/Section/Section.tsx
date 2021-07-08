@@ -13,9 +13,7 @@ export const Section = ({ header, style, children }: SectionProps) => {
   const listStyle = useContext(ListStyleContext);
   return (
     <>
-      {header && (
-        <Text style={[getHeaderStyles(listStyle), style]}>{header}</Text>
-      )}
+      {header && <Text style={getHeaderStyles(listStyle)}>{header}</Text>}
       <View style={getContainerStyles(listStyle)}>{children}</View>
     </>
   );

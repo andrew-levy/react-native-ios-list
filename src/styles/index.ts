@@ -53,6 +53,17 @@ export const styles = StyleSheet.create({
     marginLeft: '5%',
   },
   scrollView: { backgroundColor: colors.systemgray6 },
+  row: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  content: {
+    marginHorizontal: 10,
+    flexGrow: 1,
+  },
+  leading: {},
+  trailing: {},
 });
 
 export const getContainerStyles = (style: string) => {

@@ -1,1 +1,0 @@
-export { LabelItem } from './LabelItem';
