@@ -1,3 +1,2 @@
-export { List, ListStyle } from './components/List';
-export { Section } from './components/Section';
+export { List, ListType } from './components/List';
 export { Item } from './components/Item';

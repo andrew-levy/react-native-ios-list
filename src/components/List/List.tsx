@@ -1,40 +1,58 @@
-import React, { createContext, ReactNode } from 'react';
-import { ScrollView, StyleProp, ViewStyle, View } from 'react-native';
-import { styles } from '../../styles';
-import { getSectionsFromChildren, createSection } from '../../utils';
+import React, {
+  Children,
+  cloneElement,
+  createContext,
+  ReactElement,
+} from 'react';
+import { ScrollView, View, Text } from 'react-native';
+import { getContainerStyles, getCaptionStyles, styles } from '../../styles';
 
-export enum ListStyle {
+export enum ListType {
   InsetGrouped = 'insetGrouped',
   Grouped = 'grouped',
 }
 
 type ListProps = {
-  listStyle: ListStyle;
-  sidebar?: boolean;
+  listType: ListType;
+  sideBar?: boolean;
   scroll?: true;
-  style?: StyleProp<ViewStyle>;
-  children: ReactNode;
+  header?: string;
+  footer?: string;
+  children: ReactElement<any> | ReactElement<any>[];
 };
 
-export const ListStyleContext = createContext(null);
+export const ListTypeContext = createContext(null);
 
 export const List = ({
-  listStyle = ListStyle.Grouped,
-  sidebar = false,
+  listType = ListType.Grouped,
+  sideBar = false,
   scroll = true,
+  header,
+  footer,
   children,
 }: ListProps) => {
-  const sections = getSectionsFromChildren(children);
-  const createdSections = sections.map((section, sectionKey) =>
-    createSection(section.props.children, section.props.header, sectionKey)
+  const items = (
+    <>
+      {header && <Text style={getCaptionStyles(listType)}>{header}</Text>}
+      <View style={getContainerStyles(listType)}>
+        {Children.map(children, (child, childKey) =>
+          cloneElement(child, {
+            key: childKey,
+            divider: childKey !== Children.count(children) - 1,
+            ...child.props,
+          })
+        )}
+      </View>
+      {footer && <Text style={getCaptionStyles(listType)}>{footer}</Text>}
+    </>
   );
   return (
-    <ListStyleContext.Provider value={listStyle}>
+    <ListTypeContext.Provider value={{ listType, sideBar }}>
       {scroll ? (
-        <ScrollView style={styles.scrollView}>{createdSections}</ScrollView>
+        <ScrollView style={styles.scrollView}>{items}</ScrollView>
       ) : (
-        <View style={styles.scrollView}>{createdSections}</View>
+        <View style={styles.scrollView}>{items}</View>
       )}
-    </ListStyleContext.Provider>
+    </ListTypeContext.Provider>
   );
 };

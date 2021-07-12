@@ -1,1 +1,1 @@
-export { List, ListStyle } from './List';
+export { List, ListType } from './List';

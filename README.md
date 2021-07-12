@@ -15,27 +15,20 @@ yarn add react-native-ios-list
 ```jsx
 import React from 'react';
 import { Text } from 'react-native';
-import { List, Section, Item, ListStyle } from 'react-native-ios-list';
+import { List, Item, ListType } from 'react-native-ios-list';
 
 function StaticList() {
   return (
-    <List listStyle={ListStyle.InsetGrouped}>
-      <Section header='Section 1'>
-        <Item>
-          <Text>Option 1</Text>
-        </Item>
-        <Item>
-          <Text>Option 2</Text>
-        </Item>
-      </Section>
-      <Section header='Section 2'>
-        <Item>
-          <Text>Option 1</Text>
-        </Item>
-        <Item>
-          <Text>Option 2</Text>
-        </Item>
-      </Section>
+    <List listType={ListType.InsetGrouped}>
+      <Item>
+        <Text>Option 1</Text>
+      </Item>
+      <Item>
+        <Text>Option 2</Text>
+      </Item>
+      <Item>
+        <Text>Option 3</Text>
+      </Item>
     </List>
   );
 }
@@ -45,9 +38,9 @@ You can also dynamically render list items by mapping over an array (be sure to 
 
 ```jsx
 function DynamicList() {
-  const items = ['Selection 1, Selection 2, Selection 3'];
+  const items = ['Option 1, Option 2, Option 3'];
   return (
-    <List listStyle={ListStyle.Grouped}>
+    <List listType={ListType.Grouped}>
       {items.map((text, i) => (
         <Item
           onPress={() => console.log('Pressed!')}
@@ -67,17 +60,18 @@ function DynamicList() {
 
 ### `List`
 
-The `List` component is the container for all of your list items and list sections.
+The `List` component is the container for all of your list items.
 
-| Prop        | Type        | Description                                  | Default                  |
-| ----------- | ----------- | -------------------------------------------- | ------------------------ |
-| `listStyle` | `ListStyle` | The style of the list                        | `ListStyle.InsetGrouped` |
-| `sideBar`   | `boolean`   | Put icon in the leading sidebar of each item | `false`                  |
+| Prop       | Type        | Description                                  | Default                 | Required                 |
+| ---------- | ----------- | -------------------------------------------- | ----------------------- | ------------------------ |
+| `listType` | `ListType`  | The style of the list                        | `ListType.InsetGrouped` | :heavy_multiplication_x: |
+| `sideBar`  | `boolean`   | Put icon in the leading sidebar of each item | `false`                 | :heavy_multiplication_x: |
+| `children` | `ReactNode` | The list items                               | `null`                  | :heavy_check_mark:       |
 
-`ListStyle` is an enum with the following properties,
+`ListType` is an enum with the following properties,
 
 ```jsx
-enum ListStyle {
+enum ListType {
   InsetGrouped = 'insetGrouped',
   Grouped = 'grouped',
 }
@@ -87,30 +81,11 @@ The `InsetGrouped` style gives the list container rounded corners and horizontal
 
 The `Grouped` style gives the list container the original iOS list look with sharp edges and 100% width.
 
-### `Section`
-
-The `Section` component is an optional container for all of your list items. Each `Section` within a `List` will be its own separate list, separated by some margin. You can achieve the same effect by simply using multiple `List` components.
-
-| Prop     | Type     | Description               | Default |
-| -------- | -------- | ------------------------- | ------- |
-| `header` | `string` | The section's header text | `null`  |
-| `footer` | `string` | The section's footer text | `null`  |
-
 ### `Item`
 
 The `Item` component is the content you want to show in each row of the list. You can statically add each `Item` or dynamically render them by mapping over some array.
 
-An item consists of 3 subsections: `leading`, `content`, and `trailing`. Each corresponds to a different part of the row and all are optional. Here's an example:
-
-```jsx
-<Item
-  leading={<CustomIcon />}
-  content={<Text>Dark Mode</Text>}
-  trailing={<Switch />}
-/>
-```
-
-Sometimes the bulk of the item is in the `content`, so you also have the option of defining the content as a child of the item ... Totally up to you!
+An item consists of 3 subsections: `leading` (left-most component), `trailing` (right-most component) and `children` (item content). Each corresponds to a different part of the row and all are optional.
 
 ```jsx
 <Item leading={<MoonIcon />} trailing={<RightChevron />}>
@@ -127,12 +102,11 @@ Sometimes the bulk of the item is in the `content`, so you also have the option 
 </Item>
 ```
 
-| Prop       | Type                   | Description                                                                                  | Default |
-| ---------- | ---------------------- | -------------------------------------------------------------------------------------------- | ------- |
-| `leading`  | `ReactNode`            | Left component (usually an icon)                                                             | `null`  |
-| `content`  | `ReactNode`            | Item content                                                                                 | `null`  |
-| `trailing` | `ReactNode`            | Right component (usually an icon or control)                                                 | `null`  |
-| `onPress`  | `() => void`           | Action to execute when pressed                                                               | `null`  |
-| `divider`  | `boolean`              | Show divider line                                                                            | `true`  |
-| `style`    | `StyleProp<ViewStyle>` | Styles to override any pre built styles                                                      | `null`  |
-| `children` | `ReactNode`            | If no `content` is specified as a prop, the `children` will render in the place of `content` | `null`  |
+| Prop       | Type                   | Description                                  | Default | Required                 |
+| ---------- | ---------------------- | -------------------------------------------- | ------- | ------------------------ |
+| `leading`  | `ReactNode`            | Left component (usually an icon)             | `null`  | :heavy_multiplication_x: |
+| `trailing` | `ReactNode`            | Right component (usually an icon or control) | `null`  | :heavy_multiplication_x: |
+| `onPress`  | `() => void`           | Action to execute when pressed               | `null`  | :heavy_multiplication_x: |
+| `divider`  | `boolean`              | Show divider line                            | `true`  | :heavy_multiplication_x: |
+| `style`    | `StyleProp<ViewStyle>` | Styles to override any pre built styles      | `null`  | :heavy_multiplication_x: |
+| `children` | `ReactNode`            | The content of the list item                 | `null`  | :heavy_multiplication_x: |

@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native';
 
-const colors = {
+export const colors = {
   systemgray: '#8e8e93',
   systemgray3: '#c7c7cc',
   systemgray6: '#f2f2f7',
   white: '#fff',
+  highlightColor: '#e5e5ea',
   transparent: 'transparent',
 };
 
@@ -37,12 +38,12 @@ export const styles = StyleSheet.create({
     padding: 10,
     paddingLeft: '5%',
   },
-  groupedHeader: {
+  groupedCaption: {
     paddingLeft: '5%',
     color: colors.systemgray,
     fontWeight: '500',
   },
-  insetGroupedHeader: {
+  insetGroupedCaption: {
     paddingLeft: '7%',
     color: colors.systemgray,
     fontWeight: '500',
@@ -59,11 +60,10 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   content: {
-    marginHorizontal: 10,
     flexGrow: 1,
   },
-  leading: {},
-  trailing: {},
+  leading: { marginRight: 10 },
+  trailing: { marginLeft: 10 },
 });
 
 export const getContainerStyles = (style: string) => {
@@ -86,11 +86,17 @@ export const getItemStyles = (style: string) => {
   }
 };
 
-export const getHeaderStyles = (style: string) => {
+export const getCaptionStyles = (style: string) => {
   switch (style) {
     case 'grouped':
-      return styles.groupedHeader;
+      return styles.groupedCaption;
     case 'insetGrouped':
-      return styles.insetGroupedHeader;
+      return styles.insetGroupedCaption;
   }
+};
+
+// TODO
+export const getDividerStyles = (sideBar: boolean) => {
+  return styles.divider;
+  // return sideBar ? { ...styles.divider, paddingLeft: '10%' } : styles.divider;
 };
