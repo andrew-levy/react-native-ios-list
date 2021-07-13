@@ -10,9 +10,17 @@ export const colors = {
 };
 
 export const styles = StyleSheet.create({
+  groupedOuterContainer: {
+    width: '100%',
+    backgroundColor: colors.transparent,
+  },
+  insetGroupedOuterContainer: {
+    width: '90%',
+    backgroundColor: colors.transparent,
+    alignSelf: 'center',
+  },
   groupedContainer: {
     backgroundColor: colors.white,
-    width: '100%',
     borderBottomWidth: StyleSheet.hairlineWidth * 1.2,
     borderTopWidth: StyleSheet.hairlineWidth * 1.2,
     borderColor: colors.systemgray3,
@@ -20,9 +28,7 @@ export const styles = StyleSheet.create({
   },
   insetGroupedContainer: {
     backgroundColor: colors.white,
-    width: '90%',
     borderRadius: 10,
-    alignSelf: 'center',
     overflow: 'hidden',
     marginVertical: 10,
   },
@@ -38,24 +44,18 @@ export const styles = StyleSheet.create({
     padding: 10,
     paddingLeft: '5%',
   },
-  groupedCaption: {
-    paddingLeft: '5%',
+  caption: {
     color: colors.systemgray,
     fontWeight: '500',
-  },
-  insetGroupedCaption: {
-    paddingLeft: '7%',
-    color: colors.systemgray,
-    fontWeight: '500',
+    marginLeft: '3%',
   },
   divider: {
     borderColor: colors.systemgray3,
     borderBottomWidth: StyleSheet.hairlineWidth * 1.2,
     marginLeft: '5%',
   },
-  scrollView: { backgroundColor: colors.systemgray6 },
+  background: { backgroundColor: colors.systemgray6 },
   row: {
-    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -66,8 +66,19 @@ export const styles = StyleSheet.create({
   trailing: { marginLeft: 10 },
 });
 
-export const getContainerStyles = (style: string) => {
-  switch (style) {
+export const getOuterContainerStyles = (type: string) => {
+  switch (type) {
+    case 'grouped':
+      return styles.groupedOuterContainer;
+    case 'insetGrouped':
+      return styles.insetGroupedOuterContainer;
+    default:
+      return styles.groupedOuterContainer;
+  }
+};
+
+export const getContainerStyles = (type: string) => {
+  switch (type) {
     case 'grouped':
       return styles.groupedContainer;
     case 'insetGrouped':
@@ -77,21 +88,12 @@ export const getContainerStyles = (style: string) => {
   }
 };
 
-export const getItemStyles = (style: string) => {
-  switch (style) {
+export const getItemStyles = (type: string) => {
+  switch (type) {
     case 'grouped':
       return styles.groupedItem;
     case 'insetGrouped':
       return styles.insetGroupedItem;
-  }
-};
-
-export const getCaptionStyles = (style: string) => {
-  switch (style) {
-    case 'grouped':
-      return styles.groupedCaption;
-    case 'insetGrouped':
-      return styles.insetGroupedCaption;
   }
 };
 

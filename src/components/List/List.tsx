@@ -1,11 +1,17 @@
 import React, {
   Children,
+  ReactElement,
   cloneElement,
   createContext,
-  ReactElement,
 } from 'react';
-import { ScrollView, View, Text } from 'react-native';
-import { getContainerStyles, getCaptionStyles, styles } from '../../styles';
+import { View, Text } from 'react-native';
+import {
+  getContainerStyles,
+  colors,
+  getOuterContainerStyles,
+  styles,
+} from '../../styles';
+import { ItemProps } from '../Item';
 
 export enum ListType {
   InsetGrouped = 'insetGrouped',
@@ -13,12 +19,12 @@ export enum ListType {
 }
 
 type ListProps = {
-  listType: ListType;
+  listType?: ListType;
   sideBar?: boolean;
-  scroll?: true;
-  header?: string;
-  footer?: string;
-  children: ReactElement<any> | ReactElement<any>[];
+  header?: string | ReactElement<any>;
+  footer?: string | ReactElement<any>;
+  backgroundColor?: string;
+  children: ReactElement<ItemProps> | ReactElement<ItemProps>[];
 };
 
 export const ListTypeContext = createContext(null);
@@ -26,33 +32,44 @@ export const ListTypeContext = createContext(null);
 export const List = ({
   listType = ListType.Grouped,
   sideBar = false,
-  scroll = true,
+  backgroundColor = colors.white,
   header,
   footer,
   children,
 }: ListProps) => {
-  const items = (
-    <>
-      {header && <Text style={getCaptionStyles(listType)}>{header}</Text>}
-      <View style={getContainerStyles(listType)}>
-        {Children.map(children, (child, childKey) =>
-          cloneElement(child, {
-            key: childKey,
-            divider: childKey !== Children.count(children) - 1,
-            ...child.props,
-          })
-        )}
-      </View>
-      {footer && <Text style={getCaptionStyles(listType)}>{footer}</Text>}
-    </>
-  );
+  const listHeader =
+    header && typeof header === 'string' ? (
+      <Text style={styles.caption}>{header}</Text>
+    ) : (
+      header
+    );
+  const listFooter =
+    footer && typeof footer === 'string' ? (
+      <Text style={styles.caption}>{footer}</Text>
+    ) : (
+      footer
+    );
+
   return (
     <ListTypeContext.Provider value={{ listType, sideBar }}>
-      {scroll ? (
-        <ScrollView style={styles.scrollView}>{items}</ScrollView>
-      ) : (
-        <View style={styles.scrollView}>{items}</View>
-      )}
+      <View style={getOuterContainerStyles(listType)}>
+        {listHeader}
+        <View
+          style={[
+            getContainerStyles(listType),
+            backgroundColor && { backgroundColor },
+          ]}
+        >
+          {Children.map(children, (child, childKey) =>
+            cloneElement(child, {
+              key: childKey,
+              divider: childKey !== Children.count(children) - 1,
+              ...child.props,
+            })
+          )}
+        </View>
+        {listFooter}
+      </View>
     </ListTypeContext.Provider>
   );
 };

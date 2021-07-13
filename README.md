@@ -4,8 +4,6 @@ iOS-styled list and list item components
 
 <!-- ## Installation
 
-<i>(Coming soon to package manager near you...)</i>
-
 ```console
 yarn add react-native-ios-list
 ``` -->
@@ -42,12 +40,7 @@ function DynamicList() {
   return (
     <List listType={ListType.Grouped}>
       {items.map((text, i) => (
-        <Item
-          onPress={() => console.log('Pressed!')}
-          leading={<ProfileIcon />}
-          trailing={<RightChevron />}
-          key={i}
-        >
+        <Item key={i}>
           <Text>{text}</Text>
         </Item>
       ))}
@@ -62,11 +55,13 @@ function DynamicList() {
 
 The `List` component is the container for all of your list items.
 
-| Prop       | Type        | Description                                  | Default                 | Required                 |
-| ---------- | ----------- | -------------------------------------------- | ----------------------- | ------------------------ |
-| `listType` | `ListType`  | The style of the list                        | `ListType.InsetGrouped` | :heavy_multiplication_x: |
-| `sideBar`  | `boolean`   | Put icon in the leading sidebar of each item | `false`                 | :heavy_multiplication_x: |
-| `children` | `ReactNode` | The list items                               | `null`                  | :heavy_check_mark:       |
+| Prop       | Type                     | Description                              | Default                | Required                 |
+| ---------- | ------------------------ | ---------------------------------------- | ---------------------- | ------------------------ | ------------------ |
+| `listType` | `ListType`               | The style of the list                    | `ListType.Grouped`     | :heavy_multiplication_x: |
+| `sideBar`  | `boolean`                | Leading component in left margin of item | `false`                | :heavy_multiplication_x: |
+| `header`   | `ReactElement<any>       | string`                                  | Content above the list | `null`                   | :heavy_check_mark: |
+| `footer`   | `ReactElement<any>       | string`                                  | Content below the list | `null`                   | :heavy_check_mark: |
+| `children` | `ReactElement<ItemProps> | ReactElement<ItemProps>[]`               | The list items         | `null`                   | :heavy_check_mark: |
 
 `ListType` is an enum with the following properties,
 
@@ -85,28 +80,29 @@ The `Grouped` style gives the list container the original iOS list look with sha
 
 The `Item` component is the content you want to show in each row of the list. You can statically add each `Item` or dynamically render them by mapping over some array.
 
-An item consists of 3 subsections: `leading` (left-most component), `trailing` (right-most component) and `children` (item content). Each corresponds to a different part of the row and all are optional.
+An item consists of 3 sections:
+
+- `leading` (left-most component)
+- `trailing` (right-most component)
+- `children` (center content)
+
+Each corresponds to a different part of the row and all are optional.
 
 ```jsx
 <Item leading={<MoonIcon />} trailing={<RightChevron />}>
-  <View
-    style={{
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    }}
-  >
+  <View style={styles.row}>
     <Text>Dark Mode</Text>
-    <Text style={{ color: 'lightgrey' }}>On</Text>
+    <Text>On</Text>
   </View>
 </Item>
 ```
 
-| Prop       | Type                   | Description                                  | Default | Required                 |
-| ---------- | ---------------------- | -------------------------------------------- | ------- | ------------------------ |
-| `leading`  | `ReactNode`            | Left component (usually an icon)             | `null`  | :heavy_multiplication_x: |
-| `trailing` | `ReactNode`            | Right component (usually an icon or control) | `null`  | :heavy_multiplication_x: |
-| `onPress`  | `() => void`           | Action to execute when pressed               | `null`  | :heavy_multiplication_x: |
-| `divider`  | `boolean`              | Show divider line                            | `true`  | :heavy_multiplication_x: |
-| `style`    | `StyleProp<ViewStyle>` | Styles to override any pre built styles      | `null`  | :heavy_multiplication_x: |
-| `children` | `ReactNode`            | The content of the list item                 | `null`  | :heavy_multiplication_x: |
+| Prop             | Type                   | Description                             | Default                                      | Required                 |
+| ---------------- | ---------------------- | --------------------------------------- | -------------------------------------------- | ------------------------ | ------------------------ |
+| `leading`        | `ReactElement<any>     | ReactElement<any>[]`                    | Left component (usually an icon)             | `null`                   | :heavy_multiplication_x: |
+| `trailing`       | `ReactElement<any>     | ReactElement<any>[]`                    | Right component (usually an icon or control) | `null`                   | :heavy_multiplication_x: |
+| `onPress`        | `() => void`           | Action to execute when pressed          | `null`                                       | :heavy_multiplication_x: |
+| `highlightColor` | `string`               | Highlight color on press                | `'#e5e5ea'`                                  | :heavy_multiplication_x: |
+| `divider`        | `boolean`              | Show divider line                       | `true`                                       | :heavy_multiplication_x: |
+| `style`          | `StyleProp<ViewStyle>` | Styles to override any pre built styles | `null`                                       | :heavy_multiplication_x: |
+| `children`       | `ReactNode`            | The content of the list item            | `null`                                       | :heavy_multiplication_x: |
