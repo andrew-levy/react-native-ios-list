@@ -55,12 +55,45 @@ function DynamicList() {
 
 The `List` component is the container for all of your list items.
 
+#### Props:
+
+#### `listType` 
+
+Left component (usually an icon) 
+
+> required: No | type:  `ListType`  | default: `ListType.Grouped`
+
+#### `sideBar` 
+
+Right component (usually an icon or control)
+
+> required: No | type:  `boolean`  | default: `null`
+
+#### `header` 
+
+Action to execute when pressed 
+
+> required: No | type:  `ReactElement<any> | string`   | default: `null`
+
+
+#### `footer` 
+
+Highlight color on press 
+
+> required: No | type:  `ReactElement<any> | string`   | default: `null`     
+       
+#### `children` 
+
+Show divider line
+
+> required: No | type:  `boolean`   | default: `true`
+
 | Prop       | Type                     | Description                              | Default                | Required                 |
-| ---------- | ------------------------ | ---------------------------------------- | ---------------------- | ------------------------ |
+| ---------- | ------------------------ | ---------------------------------------- | ---------------------- | ------------------------ | ------------------ |
 | `listType` | `ListType`               | The style of the list                    | `ListType.Grouped`     | :heavy_multiplication_x: |
 | `sideBar`  | `boolean`                | Leading component in left margin of item | `false`                | :heavy_multiplication_x: |
-| `header`   | `ReactElement<any> | string`                                  | Content above the list | `null`                   | :heavy_check_mark: |
-| `footer`   | `ReactElement<any> | string`                                  | Content below the list | `null`                   | :heavy_check_mark: |
+| `header`   | `ReactElement<any>       | string`                                  | Content above the list | `null`                   | :heavy_check_mark: |
+| `footer`   | `ReactElement<any>       | string`                                  | Content below the list | `null`                   | :heavy_check_mark: |
 | `children` | `ReactElement<ItemProps> | ReactElement<ItemProps>[]`               | The list items         | `null`                   | :heavy_check_mark: |
 
 `ListType` is an enum with the following properties,
@@ -96,13 +129,43 @@ Each corresponds to a different part of the row and all are optional.
   </View>
 </Item>
 ```
+#### Props:
 
-| Prop             | Type                   | Description                             | Default                                      | Required                 |
-| ---------------- | ---------------------- | --------------------------------------- | -------------------------------------------- | ------------------------ | 
-| `leading`        | `ReactElement<any> | ReactElement<any>[]`                    | Left component (usually an icon)             | `null`                   | :heavy_multiplication_x: |
-| `trailing`       | `ReactElement<any> | ReactElement<any>[]`                    | Right component (usually an icon or control) | `null`                   | :heavy_multiplication_x: |
-| `onPress`        | `() => void`           | Action to execute when pressed          | `null`                                       | :heavy_multiplication_x: |
-| `highlightColor` | `string`               | Highlight color on press                | `'#e5e5ea'`                                  | :heavy_multiplication_x: |
-| `divider`        | `boolean`              | Show divider line                       | `true`                                       | :heavy_multiplication_x: |
-| `style`          | `StyleProp<ViewStyle>` | Styles to override any pre built styles | `null`                                       | :heavy_multiplication_x: |
-| `children`       | `ReactNode`            | The content of the list item            | `null`                                       | :heavy_multiplication_x: |
+#### `leading` 
+
+Left component (usually an icon) 
+
+> required: No | type:  `ReactElement<any>     | ReactElement<any>[]`  | default: `null`
+
+#### `trailing` 
+
+Right component (usually an icon or control)
+
+> required: No | type:  `ReactElement<any>     | ReactElement<any>[]`  | default: `null`
+
+#### `onPress` 
+
+Action to execute when pressed 
+
+> required: No | type:  `() => void`   | default: `null`
+
+
+#### `highlightColor` 
+
+Highlight color on press 
+
+> required: No | type:  `string`   | default: `'#e5e5ea'`     
+       
+#### `divider` 
+
+Show divider line
+
+> required: No | type:  `boolean`   | default: `true`
+
+#### `children` 
+
+The content of the list item 
+
+> required: No | type:  `ReactNode`   | default: `null`
+
+
