@@ -56,11 +56,11 @@ function DynamicList() {
 The `List` component is the container for all of your list items.
 
 | Prop       | Type                     | Description                              | Default                | Required                 |
-| ---------- | ------------------------ | ---------------------------------------- | ---------------------- | ------------------------ | ------------------ |
+| ---------- | ------------------------ | ---------------------------------------- | ---------------------- | ------------------------ |
 | `listType` | `ListType`               | The style of the list                    | `ListType.Grouped`     | :heavy_multiplication_x: |
 | `sideBar`  | `boolean`                | Leading component in left margin of item | `false`                | :heavy_multiplication_x: |
-| `header`   | `ReactElement<any>       | string`                                  | Content above the list | `null`                   | :heavy_check_mark: |
-| `footer`   | `ReactElement<any>       | string`                                  | Content below the list | `null`                   | :heavy_check_mark: |
+| `header`   | `ReactElement<any> | string`                                  | Content above the list | `null`                   | :heavy_check_mark: |
+| `footer`   | `ReactElement<any> | string`                                  | Content below the list | `null`                   | :heavy_check_mark: |
 | `children` | `ReactElement<ItemProps> | ReactElement<ItemProps>[]`               | The list items         | `null`                   | :heavy_check_mark: |
 
 `ListType` is an enum with the following properties,
@@ -98,9 +98,9 @@ Each corresponds to a different part of the row and all are optional.
 ```
 
 | Prop             | Type                   | Description                             | Default                                      | Required                 |
-| ---------------- | ---------------------- | --------------------------------------- | -------------------------------------------- | ------------------------ | ------------------------ |
-| `leading`        | `ReactElement<any>     | ReactElement<any>[]`                    | Left component (usually an icon)             | `null`                   | :heavy_multiplication_x: |
-| `trailing`       | `ReactElement<any>     | ReactElement<any>[]`                    | Right component (usually an icon or control) | `null`                   | :heavy_multiplication_x: |
+| ---------------- | ---------------------- | --------------------------------------- | -------------------------------------------- | ------------------------ | 
+| `leading`        | `ReactElement<any> | ReactElement<any>[]`                    | Left component (usually an icon)             | `null`                   | :heavy_multiplication_x: |
+| `trailing`       | `ReactElement<any> | ReactElement<any>[]`                    | Right component (usually an icon or control) | `null`                   | :heavy_multiplication_x: |
 | `onPress`        | `() => void`           | Action to execute when pressed          | `null`                                       | :heavy_multiplication_x: |
 | `highlightColor` | `string`               | Highlight color on press                | `'#e5e5ea'`                                  | :heavy_multiplication_x: |
 | `divider`        | `boolean`              | Show divider line                       | `true`                                       | :heavy_multiplication_x: |
