@@ -51,7 +51,7 @@ function DynamicList() {
 
 ## Documentation
 
-### `List`
+### `<List />`
 
 The `List` component is the container for all of your list items.
 
@@ -59,49 +59,11 @@ The `List` component is the container for all of your list items.
 
 #### `listType` 
 
-Left component (usually an icon) 
-
-> required: No | type:  `ListType`  | default: `ListType.Grouped`
-
-#### `sideBar` 
-
-Right component (usually an icon or control)
-
-> required: No | type:  `boolean`  | default: `null`
-
-#### `header` 
-
-Action to execute when pressed 
-
-> required: No | type:  `ReactElement<any> | string`   | default: `null`
-
-
-#### `footer` 
-
-Highlight color on press 
-
-> required: No | type:  `ReactElement<any> | string`   | default: `null`     
-       
-#### `children` 
-
-Show divider line
-
-> required: No | type:  `boolean`   | default: `true`
-
-| Prop       | Type                     | Description                              | Default                | Required                 |
-| ---------- | ------------------------ | ---------------------------------------- | ---------------------- | ------------------------ | ------------------ |
-| `listType` | `ListType`               | The style of the list                    | `ListType.Grouped`     | :heavy_multiplication_x: |
-| `sideBar`  | `boolean`                | Leading component in left margin of item | `false`                | :heavy_multiplication_x: |
-| `header`   | `ReactElement<any>       | string`                                  | Content above the list | `null`                   | :heavy_check_mark: |
-| `footer`   | `ReactElement<any>       | string`                                  | Content below the list | `null`                   | :heavy_check_mark: |
-| `children` | `ReactElement<ItemProps> | ReactElement<ItemProps>[]`               | The list items         | `null`                   | :heavy_check_mark: |
-
-`ListType` is an enum with the following properties,
+The style of the list  
 
 ```jsx
 enum ListType {
   InsetGrouped = 'insetGrouped',
-  Grouped = 'grouped',
 }
 ```
 
@@ -109,7 +71,38 @@ The `InsetGrouped` style gives the list container rounded corners and horizontal
 
 The `Grouped` style gives the list container the original iOS list look with sharp edges and 100% width.
 
-### `Item`
+> required: no | type:  `ListType`  | default: `ListType.Grouped`
+
+#### `sideBar` 
+
+Leading component in left margin of item
+
+> required: no | type:  `boolean`  | default: `false`
+
+#### `header` 
+
+Content above the list
+
+> required: no | type:  `ReactElement<any> | string`   | default: `null`
+
+
+#### `footer` 
+
+Content below the list
+
+> required: no | type:  `ReactElement<ItemProps> | ReactElement<ItemProps>[]`    | default: `null`     
+       
+#### `children` 
+
+The list items
+
+> required: no | type:  `boolean`   | default: `true`
+
+
+
+
+
+### `<Item />`
 
 The `Item` component is the content you want to show in each row of the list. You can statically add each `Item` or dynamically render them by mapping over some array.
 
@@ -135,37 +128,37 @@ Each corresponds to a different part of the row and all are optional.
 
 Left component (usually an icon) 
 
-> required: No | type:  `ReactElement<any>     | ReactElement<any>[]`  | default: `null`
+> required: no | type:  `ReactElement<any>     | ReactElement<any>[]`  | default: `null`
 
 #### `trailing` 
 
 Right component (usually an icon or control)
 
-> required: No | type:  `ReactElement<any>     | ReactElement<any>[]`  | default: `null`
+> required: no | type:  `ReactElement<any>     | ReactElement<any>[]`  | default: `null`
 
 #### `onPress` 
 
 Action to execute when pressed 
 
-> required: No | type:  `() => void`   | default: `null`
+> required: no | type:  `() => void`   | default: `null`
 
 
 #### `highlightColor` 
 
 Highlight color on press 
 
-> required: No | type:  `string`   | default: `'#e5e5ea'`     
+> required: no | type:  `string`   | default: `'#e5e5ea'`     
        
 #### `divider` 
 
 Show divider line
 
-> required: No | type:  `boolean`   | default: `true`
+> required: no | type:  `boolean`   | default: `true`
 
 #### `children` 
 
 The content of the list item 
 
-> required: No | type:  `ReactNode`   | default: `null`
+> required: no | type:  `Reactnode`   | default: `null`
 
 
