@@ -11,26 +11,22 @@ import {
   getOuterContainerStyles,
   styles,
 } from '../../styles';
-import { ItemProps } from '../Item';
+import { RowProps } from '../Row';
 
-export enum ListType {
-  InsetGrouped = 'insetGrouped',
-  Grouped = 'grouped',
-}
 
 type ListProps = {
-  listType?: ListType;
+  inset?: boolean;
   sideBar?: boolean;
   header?: string | ReactElement<any>;
   footer?: string | ReactElement<any>;
   backgroundColor?: string;
-  children: ReactElement<ItemProps> | ReactElement<ItemProps>[];
+  children: ReactElement<RowProps> | ReactElement<RowProps>[];
 };
 
-export const ListTypeContext = createContext(null);
+export const ListStyleContext = createContext(null);
 
 export const List = ({
-  listType = ListType.Grouped,
+  inset = false,
   sideBar = false,
   backgroundColor = colors.white,
   header,
@@ -50,13 +46,14 @@ export const List = ({
       footer
     );
 
+  const listStyle = inset ? 'insetGrouped' : 'grouped'
   return (
-    <ListTypeContext.Provider value={{ listType, sideBar }}>
-      <View style={getOuterContainerStyles(listType)}>
+    <ListStyleContext.Provider value={{ listStyle, sideBar }}>
+      <View style={getOuterContainerStyles(listStyle)}>
         {listHeader}
         <View
           style={[
-            getContainerStyles(listType),
+            getContainerStyles(listStyle),
             backgroundColor && { backgroundColor },
           ]}
         >
@@ -70,6 +67,6 @@ export const List = ({
         </View>
         {listFooter}
       </View>
-    </ListTypeContext.Provider>
+    </ListStyleContext.Provider>
   );
 };

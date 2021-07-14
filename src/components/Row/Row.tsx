@@ -1,28 +1,34 @@
 import React, { PropsWithChildren, ReactElement, useContext } from 'react';
 import { TouchableHighlight, View } from 'react-native';
-import { styles, getItemStyles, getDividerStyles, colors } from '../../styles';
-import { ListTypeContext } from '../List';
+import { styles, getRowStyles, getDividerStyles, colors } from '../../styles';
+import { ListStyleContext } from '../List';
 
-export type ItemProps = PropsWithChildren<{
+export type RowProps = PropsWithChildren<{
   leading?: ReactElement<any> | ReactElement<any>[];
   trailing?: ReactElement<any> | ReactElement<any>[];
   divider?: boolean;
+  backgroundColor?: string;
   highlightColor?: string;
   onPress?: () => void;
 }>;
 
-export const Item = ({
+export const Row = ({
   leading,
   trailing,
   divider,
+  backgroundColor, 
   highlightColor = colors.highlightColor,
   onPress,
   children,
-}: ItemProps) => {
-  const { listType, sideBar } = useContext(ListTypeContext);
-  let itemContent = (
+}: RowProps) => {
+  const { listStyle, sideBar } = useContext(ListStyleContext);
+  let rowContent = (
     <>
-      <View style={[getItemStyles(listType), styles.row]}>
+      <View style={[
+        getRowStyles(listStyle), 
+        styles.row, 
+        backgroundColor && { backgroundColor }
+      ]}>
         <View style={styles.leading}>{leading}</View>
         <View style={styles.content}>{children}</View>
         <View style={styles.trailing}>{trailing}</View>
@@ -33,9 +39,9 @@ export const Item = ({
   if (onPress) {
     return (
       <TouchableHighlight underlayColor={highlightColor} onPress={onPress}>
-        {itemContent}
+        {rowContent}
       </TouchableHighlight>
     );
   }
-  return itemContent;
+  return rowContent;
 };

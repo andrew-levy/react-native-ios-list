@@ -32,13 +32,13 @@ export const styles = StyleSheet.create({
     overflow: 'hidden',
     marginVertical: 10,
   },
-  groupedItem: {
+  groupedRow: {
     backgroundColor: colors.transparent,
     width: '100%',
     padding: 10,
     paddingLeft: '5%',
   },
-  insetGroupedItem: {
+  insetGroupedRow: {
     backgroundColor: colors.transparent,
     width: '100%',
     padding: 10,
@@ -88,12 +88,12 @@ export const getContainerStyles = (type: string) => {
   }
 };
 
-export const getItemStyles = (type: string) => {
+export const getRowStyles = (type: string) => {
   switch (type) {
     case 'grouped':
-      return styles.groupedItem;
+      return styles.groupedRow;
     case 'insetGrouped':
-      return styles.insetGroupedItem;
+      return styles.insetGroupedRow;
   }
 };
 

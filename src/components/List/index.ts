@@ -1,1 +1,1 @@
-export { List, ListType, ListTypeContext } from './List';
+export { List, ListStyleContext } from './List';
