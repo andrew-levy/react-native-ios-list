@@ -33,13 +33,11 @@ export const styles = StyleSheet.create({
     marginVertical: 10,
   },
   groupedRow: {
-    backgroundColor: colors.transparent,
     width: '100%',
     padding: 10,
     paddingLeft: '5%',
   },
   insetGroupedRow: {
-    backgroundColor: colors.transparent,
     width: '100%',
     padding: 10,
     paddingLeft: '5%',

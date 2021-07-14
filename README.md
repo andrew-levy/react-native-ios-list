@@ -67,7 +67,9 @@ Gives the list rounded corners and adjusts list width to be inset from the edges
 This prop is based off of inset grouped and grouped list styles found in the <a href="https://developer.apple.com/design/human-interface-guidelines/ios/views/tables/">Apple Human Interface Guidelines</a>. 
 
 > required: no 
+>
 > type:  `boolean` 
+>
 > default: `false`
 
 #### `sideBar` 
@@ -75,15 +77,20 @@ This prop is based off of inset grouped and grouped list styles found in the <a 
 If enabled, the `leading` prop for each `Row` will display in the left margin of the row item, extending past the divider.
 
 > required: no 
+>
 > type:  `boolean`  
+>
 > default: `false`
+
 
 #### `header` 
 
 Content or text above the list
 
 > required: no 
-> type:  `ReactElement<any> | string`   
+>
+> type:  `ReactElement<any> | string` 
+>  
 > default: `null`
 
 
@@ -92,7 +99,9 @@ Content or text above the list
 Content or text below the list
 
 > required: no 
-> type:  `ReactElement<RowProps> | ReactElement<RowProps>[]`    
+>
+> type:  `ReactElement<RowProps> | ReactElement<RowProps>[]` 
+>   
 > default: `null`     
        
 #### `children` 
@@ -100,7 +109,9 @@ Content or text below the list
 The list rows
 
 > required: no 
-> type:  `ReactNode`   
+>
+> type: `ReactNode`   
+>
 > default: `true`
 
 
@@ -134,7 +145,9 @@ Each corresponds to a different part of the row and all are optional.
 Left component. This is usually an icon.
 
 > required: no 
-> type:  `ReactElement<any>     | ReactElement<any>[]`  
+>
+> type: `ReactElement<any>     | ReactElement<any>[]`  
+>
 > default: `null`
 
 #### `trailing` 
@@ -142,7 +155,9 @@ Left component. This is usually an icon.
 Right component. This is usually an icon or a control.
 
 > required: no 
-> type:  `ReactElement<any>     | ReactElement<any>[]`  
+>
+> type: `ReactElement<any>     | ReactElement<any>[]` 
+> 
 > default: `null`
 
 #### `onPress` 
@@ -150,8 +165,20 @@ Right component. This is usually an icon or a control.
 An action to execute when the row is pressed.
 
 > required: no 
-> type:  `() => void`   
+>
+> type: `() => void`   
+>
 > default: `null`
+
+#### `backgroundColor` 
+
+Row background color.
+
+> required: no 
+>
+> type: `string`   
+>
+> default: `'transparent'`  
 
 
 #### `highlightColor` 
@@ -159,7 +186,9 @@ An action to execute when the row is pressed.
 Highlight color when pressed.
 
 > required: no 
-> type:  `string`   
+>
+> type: `string`   
+>
 > default: `'#e5e5ea'`     
        
 #### `divider` 
@@ -167,7 +196,9 @@ Highlight color when pressed.
 Show divider line
 
 > required: no 
-> type:  `boolean`   
+>
+> type: `boolean`   
+>
 > default: `true`
 
 #### `children` 
@@ -175,7 +206,8 @@ Show divider line
 The content of the list row 
 
 > required: no 
-> type:  `Reactnode`   
+>
+> type: `Reactnode`   
+>
 > default: `null`
-
 
