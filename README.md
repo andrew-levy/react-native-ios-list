@@ -85,7 +85,7 @@ If enabled, the `leading` prop for each `Row` will display in the left margin of
 
 #### `header` 
 
-Content or text above the list
+Content or text above the list.
 
 > required: no 
 >
@@ -96,17 +96,27 @@ Content or text above the list
 
 #### `footer` 
 
-Content or text below the list
+Content or text below the list.
 
 > required: no 
 >
 > type:  `ReactElement<RowProps> | ReactElement<RowProps>[]` 
 >   
-> default: `null`     
+> default: `null` 
+
+#### `backgroundColor` 
+
+List background color.
+
+> required: no 
+>
+> type: `string`   
+>
+> default: `'white'`  
        
 #### `children` 
 
-The list rows
+The list rows.
 
 > required: no 
 >
@@ -193,7 +203,7 @@ Highlight color when pressed.
        
 #### `divider` 
 
-Show divider line
+Show divider line.
 
 > required: no 
 >
@@ -203,7 +213,7 @@ Show divider line
 
 #### `children` 
 
-The content of the list row 
+The content of the list row.
 
 > required: no 
 >
