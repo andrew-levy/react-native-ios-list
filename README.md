@@ -2,26 +2,29 @@
 
 iOS-styled list and list row components
 
-<!-- ## Installation
+## Installation
 
 ```console
 yarn add react-native-ios-list
-``` -->
+```
 
 ## Usage
 
-Import the components you need 
+Import the components you need
+
 ```jsx
 import React from 'react';
 import { Text } from 'react-native';
-import { List, Row } from 'react-native-ios-list'; 
+import { List, Row } from 'react-native-ios-list';
 ```
+
 Render each list item as a `Row` inside of the `List` container
+
 ```jsx
 function StaticList() {
   return (
-    <List> 
-      <Row> 
+    <List>
+      <Row>
         <Text>Row 1</Text>
       </Row>
       <Row>
@@ -39,7 +42,7 @@ You can also dynamically render rows by mapping over an array (be sure to use a 
 
 ```jsx
 function DynamicList() {
-  const rows = ['Row 1, Row 2, Row 3'];
+  const rows = ['Row 1', 'Row 2', 'Row 3'];
   return (
     <List>
       {rows.map((text, i) => (
@@ -60,73 +63,69 @@ The `List` component is the container for all of your list items.
 
 #### Props:
 
-#### `inset` 
+#### `inset`
 
 Gives the list rounded corners and adjusts list width to be inset from the edges of the parent view.
 
-This prop is based off of inset grouped and grouped list styles found in the <a href="https://developer.apple.com/design/human-interface-guidelines/ios/views/tables/">Apple Human Interface Guidelines</a>. 
+This prop is based off of inset grouped and grouped list styles found in the <a href="https://developer.apple.com/design/human-interface-guidelines/ios/views/tables/">Apple Human Interface Guidelines</a>.
 
-> required: no 
+> required: no
 >
-> type:  `boolean` 
+> type: `boolean`
 >
 > default: `false`
 
-#### `sideBar` 
+#### `sideBar`
 
 If enabled, the `leading` prop for each `Row` will display in the left margin of the row item, extending past the divider.
 
-> required: no 
+> required: no
 >
-> type:  `boolean`  
+> type: `boolean`
 >
 > default: `false`
 
-
-#### `header` 
+#### `header`
 
 Content or text above the list.
 
-> required: no 
+> required: no
 >
-> type:  `ReactElement<any> | string` 
->  
+> type: `ReactElement<any> | string`
+>
 > default: `null`
 
-
-#### `footer` 
+#### `footer`
 
 Content or text below the list.
 
-> required: no 
+> required: no
 >
-> type:  `ReactElement<RowProps> | ReactElement<RowProps>[]` 
->   
-> default: `null` 
+> type: `ReactElement<any> | string`
+>
+> default: `null`
 
-#### `backgroundColor` 
+#### `backgroundColor`
 
 List background color.
 
-> required: no 
+> required: no
 >
-> type: `string`   
+> type: `string`
 >
-> default: `'white'`  
-       
-#### `children` 
+> default: `'white'`
+
+#### `children`
 
 The list rows.
 
-> required: no 
+> required: no
 >
-> type: `ReactNode`   
+> type: `ReactNode`
 >
 > default: `true`
 
-
 ---
-
 
 ### `<Row />`
 
@@ -148,76 +147,75 @@ Each corresponds to a different part of the row and all are optional.
   </View>
 </Row>
 ```
+
 #### Props:
 
-#### `leading` 
+#### `leading`
 
 Left component. This is usually an icon.
 
-> required: no 
+> required: no
 >
-> type: `ReactElement<any>     | ReactElement<any>[]`  
+> type: `ReactElement<any> | ReactElement<any>[]`
 >
 > default: `null`
 
-#### `trailing` 
+#### `trailing`
 
 Right component. This is usually an icon or a control.
 
-> required: no 
+> required: no
 >
-> type: `ReactElement<any>     | ReactElement<any>[]` 
-> 
+> type: `ReactElement<any> | ReactElement<any>[]`
+>
 > default: `null`
 
-#### `onPress` 
+#### `onPress`
 
 An action to execute when the row is pressed.
 
-> required: no 
+> required: no
 >
-> type: `() => void`   
+> type: `() => void`
 >
 > default: `null`
 
-#### `backgroundColor` 
+#### `backgroundColor`
 
 Row background color.
 
-> required: no 
+> required: no
 >
-> type: `string`   
+> type: `string`
 >
-> default: `'transparent'`  
+> default: `'transparent'`
 
-
-#### `highlightColor` 
+#### `highlightColor`
 
 Highlight color when pressed.
 
-> required: no 
+> required: no
 >
-> type: `string`   
+> type: `string`
 >
-> default: `'#e5e5ea'`     
-       
-#### `divider` 
+> default: `'#e5e5ea'`
+
+#### `divider`
 
 Show divider line.
 
-> required: no 
+> required: no
 >
-> type: `boolean`   
+> type: `boolean`
 >
 > default: `true`
 
-#### `children` 
+#### `children`
 
 The content of the list row.
 
-> required: no 
+> required: no
 >
-> type: `Reactnode`   
+> type: `Reactnode`
 >
 > default: `null`
-
