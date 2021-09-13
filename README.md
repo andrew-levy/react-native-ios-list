@@ -2,8 +2,9 @@
 
 iOS-styled list and list row components
 
-<img src="https://github.com/andrew-levy/react-native-ios-list/blob/master/assets/readme-grouped.png?raw=true" />
-<img src="https://github.com/andrew-levy/react-native-ios-list/blob/master/assets/readme-inset.png?raw=true" />
+|                Inset Grouped List                |                     Grouped List                     |
+| :----------------------------------------------: | :--------------------------------------------------: |
+| ![inset-list](/assets/readme-inset.png?raw=true) | ![grouped-list](/assets/readme-grouped.png?raw=true) |
 
 ## Installation
 
