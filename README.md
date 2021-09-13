@@ -2,6 +2,9 @@
 
 iOS-styled list and list row components
 
+<img src="https://github.com/andrew-levy/react-native-ios-list/blob/master/assets/readme-grouped.png?raw=true" />
+<img src="https://github.com/andrew-levy/react-native-ios-list/blob/master/assets/readme-inset.png?raw=true" />
+
 ## Installation
 
 ```console
