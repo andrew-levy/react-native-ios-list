@@ -2,9 +2,7 @@
 
 iOS-styled List component
 
-|       Inset Grouped List (Sidebar enabled)       |           Grouped List (Sidebar disabled)            |
-| :----------------------------------------------: | :--------------------------------------------------: |
-| ![inset-list](/assets/readme-inset.png?raw=true) | ![grouped-list](/assets/readme-grouped.png?raw=true) |
+![examples](/assets/readme-example.png?raw=true)
 
 ## Installation
 
@@ -182,7 +180,7 @@ The list rows.
 >
 > type: `ReactNode`
 >
-> default: `true`
+> default: `null`
 
 #### `style`
 
@@ -285,7 +283,7 @@ The content of the row.
 
 > required: no
 >
-> type: `Reactnode`
+> type: `ReactNode`
 >
 > default: `null`
 
