@@ -2,7 +2,7 @@
 
 iOS-styled List component
 
-![examples](/assets/readme-example.png?raw=true)
+![examples](/assets/readme-examples.png?raw=true)
 
 ## Installation
 
