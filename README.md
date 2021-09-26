@@ -1,8 +1,8 @@
 # react-native-ios-list
 
-iOS-styled list and list row components
+iOS-styled List component
 
-|                Inset Grouped List                |                     Grouped List                     |
+|       Inset Grouped List (Sidebar enabled)       |           Grouped List (Sidebar disabled)            |
 | :----------------------------------------------: | :--------------------------------------------------: |
 | ![inset-list](/assets/readme-inset.png?raw=true) | ![grouped-list](/assets/readme-grouped.png?raw=true) |
 
@@ -17,8 +17,6 @@ yarn add react-native-ios-list
 Import the components you need
 
 ```jsx
-import React from 'react';
-import { Text } from 'react-native';
 import { List, Row } from 'react-native-ios-list';
 ```
 
@@ -27,15 +25,16 @@ Render each list item as a `Row` inside of the `List` container
 ```jsx
 function StaticList() {
   return (
-    <List>
-      <Row>
-        <Text>Row 1</Text>
+    <List sidebar inset>
+      <Row
+        leading={<GearIcon />}
+        trailing={<RightArrow />}
+        onPress={navigateToSettings}
+      >
+        <Text>Settings</Text>
       </Row>
-      <Row>
-        <Text>Row 2</Text>
-      </Row>
-      <Row>
-        <Text>Row 3</Text>
+      <Row leading={<MoonIcon />} trailing={<Toggle />}>
+        <Text>Dark Mode</Text>
       </Row>
     </List>
   );
@@ -45,13 +44,19 @@ function StaticList() {
 You can also dynamically render rows by mapping over an array (be sure to use a unique key)
 
 ```jsx
+const options = ['Dark', 'Auto', 'Light'];
+
 function DynamicList() {
-  const rows = ['Row 1', 'Row 2', 'Row 3'];
+  const [selected, setSelected] = useState(1);
   return (
-    <List>
-      {rows.map((text, i) => (
-        <Row key={i}>
-          <Text>{text}</Text>
+    <List header='Appearance'>
+      {options.map((option, i) => (
+        <Row
+          key={i}
+          trailing={i === selected && <Check />}
+          onPress={() => setSelected(i)}
+        >
+          <Text>{option}</Text>
         </Row>
       ))}
     </List>
@@ -63,7 +68,7 @@ function DynamicList() {
 
 ### `<List />`
 
-The `List` component is the container for all of your list items.
+The `List` component is the container for all of your list items. You can define your styles, header, footer, and other properties here.
 
 #### Props:
 
@@ -81,7 +86,7 @@ This prop is based off of inset grouped and grouped list styles found in the <a 
 
 #### `sideBar`
 
-If enabled, the `leading` prop for each `Row` will display in the left margin of the row item, extending past the divider.
+If true, the `leading` component for each `Row` will display in the left margin of the row item, extending past the divider.
 
 > required: no
 >
@@ -91,7 +96,7 @@ If enabled, the `leading` prop for each `Row` will display in the left margin of
 
 #### `header`
 
-Content or text above the list.
+Text or content above the list.
 
 > required: no
 >
@@ -101,7 +106,7 @@ Content or text above the list.
 
 #### `footer`
 
-Content or text below the list.
+Text or content below the list.
 
 > required: no
 >
@@ -111,13 +116,63 @@ Content or text below the list.
 
 #### `backgroundColor`
 
-List background color.
+The list background color.
 
 > required: no
 >
 > type: `string`
 >
 > default: `'white'`
+
+#### `containerBackgroundColor`
+
+The list container background color. The container includes the header and footer.
+
+> required: no
+>
+> type: `string`
+>
+> default: `'transparent'`
+
+#### `headerColor`
+
+List header text color. This only applies if the `header` prop recieves a `string`.
+
+> required: no
+>
+> type: `string`
+>
+> default: `'#8e8e93'`
+
+#### `footerColor`
+
+List footer text color. This only applies if the `footer` prop recieves a `string`.
+
+> required: no
+>
+> type: `string`
+>
+> default: `'#8e8e93'`
+
+#### `dividerColor`
+
+The color to apply to the dividers.
+
+> required: no
+>
+> type: `string`
+>
+> default: `'#c7c7cc'`
+
+#### `hideDividers`
+
+Hides dividers for all rows if true.
+
+> required: no
+>
+> type: `boolean`
+>
+> default: `false`
 
 #### `children`
 
@@ -129,11 +184,21 @@ The list rows.
 >
 > default: `true`
 
+#### `style`
+
+List style object.
+
+> required: no
+>
+> type: `StyleProp<ViewStyle>`
+>
+> default: `null`
+
 ---
 
 ### `<Row />`
 
-The `Row` component is the content you want to show in each row of the list. You can statically add each `Row` or dynamically render them by mapping over some array.
+The `Row` component is the content you want to show in each row of the list. It has some basic styles, but you have full control over how the content is styled.
 
 An row consists of 3 sections:
 
@@ -144,7 +209,7 @@ An row consists of 3 sections:
 Each corresponds to a different part of the row and all are optional.
 
 ```jsx
-<Row leading={<MoonIcon />} trailing={<RightChevron />}>
+<Row leading={<MoonIcon />} trailing={<Toggle />}>
   <View style={styles.rowSpaceBetween}>
     <Text>Dark Mode</Text>
     <Text>On</Text>
@@ -160,7 +225,7 @@ Left component. This is usually an icon.
 
 > required: no
 >
-> type: `ReactElement<any> | ReactElement<any>[]`
+> type: `ReactElement<any> | ReactElement<any>[] | null`
 >
 > default: `null`
 
@@ -170,13 +235,13 @@ Right component. This is usually an icon or a control.
 
 > required: no
 >
-> type: `ReactElement<any> | ReactElement<any>[]`
+> type: `ReactElement<any> | ReactElement<any>[] | null`
 >
 > default: `null`
 
 #### `onPress`
 
-An action to execute when the row is pressed.
+An action to execute when the row is pressed. The row will highlight when it is pressed (uses `TouchableHighlight` behind the scenes, you can modify the `highlightColor` prop to customize it further)
 
 > required: no
 >
@@ -196,7 +261,7 @@ Row background color.
 
 #### `highlightColor`
 
-Highlight color when pressed.
+Highlight color when pressed. Only applies if the `onPress` prop is specified.
 
 > required: no
 >
@@ -204,9 +269,9 @@ Highlight color when pressed.
 >
 > default: `'#e5e5ea'`
 
-#### `divider`
+#### `hideDividers`
 
-Show divider line.
+Hides this row's divider if true.
 
 > required: no
 >
@@ -216,10 +281,20 @@ Show divider line.
 
 #### `children`
 
-The content of the list row.
+The content of the row.
 
 > required: no
 >
 > type: `Reactnode`
+>
+> default: `null`
+
+#### `style`
+
+Row style object.
+
+> required: no
+>
+> type: `StyleProp<ViewStyle>`
 >
 > default: `null`

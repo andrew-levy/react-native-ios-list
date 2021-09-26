@@ -1,7 +1,7 @@
 {
   "name": "react-native-ios-list",
-  "version": "1.0.0",
-  "description": "iOS-styled list and list row components",
+  "version": "2.0.0",
+  "description": "iOS-styled List component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

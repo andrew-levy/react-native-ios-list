@@ -1,2 +1,2 @@
-export { List } from './components/List';
-export { Row } from './components/Row';
+export * from './components/List';
+export * from './components/Row';
